@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorUnselectedBorder">#BBBBBB</color>
+    <color name="colorUnselected">#F8F8F8</color>
+
+    <color name="colorPressedBorder">#209af7</color>
+    <color name="colorPressed">#e5f4ff</color>
+
+    <color name="colorSelectedBorder">#054e87</color>
+    <color name="colorSelected">#0772c4</color>
+
+    <color name="colorGridOptionText">#222222</color>
+    <color name="colorGridBackground">#EEEEEE</color>
+</resources>

@@ -1,0 +1,87 @@
+<resources>
+
+    <style name="QuestionBlock">
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+    </style>
+
+    <style name="QuestionLabel">
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="QuestionGridOptionText">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/colorGridOptionText</item>
+    </style>
+
+    <style name="QuestionOptionText">
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="AppTheme.OptionRadioButton">
+        <item name="android:gravity">center|start</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@drawable/radiobutton_background</item>
+        <item name="android:padding">24dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:button">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.OptionCheckBox">
+        <item name="android:gravity">center|start</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@drawable/radiobutton_background</item>
+        <item name="android:buttonTint">@color/checkbox</item>
+        <item name="android:padding">24dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:textColor">@color/button_text</item>
+    </style>
+
+    <style name="AppTheme.OptionGridButton">
+        <item name="android:gravity">center|start</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@drawable/radiobutton_background</item>
+        <item name="android:padding">24dp</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:button">@android:color/transparent</item>
+        <!--<item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:padding">24dp</item>
+        <item name="android:buttonTint">@color/grid_option</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:layout_marginLeft">32dp</item>
+        <item name="android:background">@drawable/border_background</item>-->
+    </style>
+
+    <style name="AppTheme.GridBorder">
+        <item name="android:background">@drawable/border_grid_background</item>
+        <!--<item name="android:paddingBottom">36dp</item>-->
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+
+    <style name="LineBreak">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#306bae</item>
+        <item name="android:layout_marginLeft">144dp</item>
+        <item name="android:layout_marginRight">144dp</item>
+        <item name="android:padding">24dp</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+</resources>
