@@ -8,25 +8,47 @@ import java.text.NumberFormat;
 public class TextValidator {
 
     private TextView textView;
+    private String type;
     private int input;
     private String errorMsg;
 
     public TextValidator(TextView textView) {
         this.textView = textView;
-
-        this.errorMsg = "";
     }
 
-    public boolean ValidEmail() {
+    public boolean validate() {
         boolean isValid = false;
 
-        // todo: test validate email
-        isValid = Patterns.EMAIL_ADDRESS.matcher(textView.getText()).matches();
+        switch (type) {
+            case "email":
+                isValid = validEmail();
+                break;
+
+            case "integer":
+                isValid = validInteger();
+                break;
+
+            default:
+                break;
+        }
 
         return isValid;
     }
 
-    public boolean ValidInteger() {
+
+    public boolean validEmail() {
+        boolean isValid = false;
+
+        // todo: test validate email
+        isValid = Patterns.EMAIL_ADDRESS.matcher(textView.getText()).matches();
+        if(!isValid) {
+            errorMsg = "Please enter a valid email address";
+        }
+
+        return isValid;
+    }
+
+    public boolean validInteger() {
         boolean isValid = false;
 
         // todo: test validate integer
@@ -59,7 +81,15 @@ public class TextValidator {
         return isValid;
     }*/
 
-    public String getTextError() {
+    public String getErrorMsg() {
         return errorMsg;
+    }
+
+    public String getType() {
+        String idName = textView.getResources().getResourceEntryName(textView.getId());
+        String[] idFields = idName.split("_");
+        type = idFields[2]; // viewtype_location_description, textView_input_email
+
+        return type;
     }
 }

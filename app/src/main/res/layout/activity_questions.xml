@@ -310,21 +310,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
-                    android:text="Integer:"
-                    android:inputType="number"
                     android:layout_weight="1"
+                    android:text="Integer:"
                     android:textSize="24sp" />
 
                 <EditText
                     android:id="@+id/editText_tb_integer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end"
                     android:layout_marginBottom="24dp"
                     android:layout_weight="1"
-                    android:layout_gravity="end"
                     android:background="@drawable/border_textbox_background"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="16dp"
                     android:textSize="24sp" />
 
@@ -339,17 +338,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
-                    android:text="Date of birth:"
                     android:layout_weight="0.5"
+                    android:text="Date of birth:"
                     android:textSize="24sp" />
 
                 <EditText
                     android:id="@+id/editText_tb_datepicker"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end"
                     android:layout_marginBottom="24dp"
                     android:layout_weight="1"
-                    android:layout_gravity="end"
                     android:background="@drawable/border_textbox_background"
                     android:ems="10"
                     android:focusable="false"

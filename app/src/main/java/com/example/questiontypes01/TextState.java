@@ -4,34 +4,32 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.TextView;
 
-import com.example.questiontypes01.controllers.TextValidationController;
+import com.example.questiontypes01.models.TextValidator;
 
 public abstract class TextState implements TextWatcher {
 
     private final TextView textView;
-    private TextValidationController tvc;
+    private TextValidator textValidator;
 
     public TextState(TextView textView) {
         this.textView = textView;
-        tvc = new TextValidationController(textView);
     }
 
-    public abstract void feedback(TextView textView, String text, String type, boolean isValid, String errorMsg);
+    public abstract void feedback(String type, boolean isValid, String errorMsg);
 
     @Override
     final public void afterTextChanged(Editable s) {
-        String text = textView.getText().toString();
+        textValidator = new TextValidator(textView);
         String type;
         boolean isValid;
         String errorMsg;
 
-        // todo: to controller
-        type = tvc.getType();
-        isValid = tvc.validate();
-        errorMsg = tvc.getErrorMsg();
+        type = textValidator.getType();
+        isValid = textValidator.validate();
+        errorMsg = textValidator.getErrorMsg();
 
         // view defined actions
-        feedback(textView, text, type, isValid, errorMsg);
+        feedback(type, isValid, errorMsg);
     }
 
     @Override

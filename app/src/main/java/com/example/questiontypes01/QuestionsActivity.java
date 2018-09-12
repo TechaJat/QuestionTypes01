@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +32,8 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     private RadioGroup rowOptions3;
     private ImageView expandIcon3;
 
+    private EditText editTextEmail;
+    private EditText editTextInt;
     private EditText editTextDate;
 
     Calendar myCalendar;
@@ -54,6 +57,8 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         rowOptions3 = findViewById(R.id.radioGroup_rowLabel_options3);
         expandIcon3 = findViewById(R.id.imageView_rowLabel_expand3);
 
+        editTextEmail = findViewById(R.id.editText_input_email);
+        editTextInt = findViewById(R.id.editText_tb_integer);
         editTextDate = findViewById(R.id.editText_tb_datepicker);
 
         rowOptions.setVisibility(View.GONE);
@@ -64,7 +69,37 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         rowBody2.setOnClickListener(this);
         rowBody3.setOnClickListener(this);
 
-        //editTextDate.setKeyListener(null);
+        editTextEmail.addTextChangedListener(new TextState(editTextEmail) {
+            @Override
+            public void feedback(String type, boolean isValid, String errorMsg) {
+                if (editTextEmail.getText().toString().trim().length() == 0) {
+                    return;
+                } else {
+                    if (isValid) {
+                        Toast.makeText(QuestionsActivity.this, "valid email", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //Toast.makeText(QuestionsActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
+                        Log.v("EMAIL", "" + errorMsg);
+                    }
+                }
+            }
+        });
+
+        editTextInt.addTextChangedListener(new TextState(editTextInt) {
+            @Override
+            public void feedback(String type, boolean isValid, String errorMsg) {
+                if (editTextInt.getText().toString().trim().length() == 0) {
+                    return;
+                } else {
+                    if (isValid) {
+                        Toast.makeText(QuestionsActivity.this, "valid integer", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //Toast.makeText(QuestionsActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
+                        Log.v("INTEGER", "" + errorMsg);
+                    }
+                }
+            }
+        });
 
         myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -80,14 +115,14 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(QuestionsActivity.this, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(QuestionsActivity.this, R.style.SpinnerDatePickerDialogTheme, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
     }
 
     // https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
     private void updateLabel() {
-        String myFormat = "dd/MM/yyyy";
+        String myFormat = "dd-MM-yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ENGLISH);
 
         editTextDate.setText(sdf.format(myCalendar.getTime()));
