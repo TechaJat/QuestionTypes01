@@ -1,13 +1,20 @@
 package com.example.questiontypes01;
 
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class QuestionsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,6 +30,10 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     private LinearLayout rowBody3;
     private RadioGroup rowOptions3;
     private ImageView expandIcon3;
+
+    private EditText editTextDate;
+
+    Calendar myCalendar;
 
 
 
@@ -43,6 +54,8 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         rowOptions3 = findViewById(R.id.radioGroup_rowLabel_options3);
         expandIcon3 = findViewById(R.id.imageView_rowLabel_expand3);
 
+        editTextDate = findViewById(R.id.editText_tb_datepicker);
+
         rowOptions.setVisibility(View.GONE);
         rowOptions2.setVisibility(View.GONE);
         rowOptions3.setVisibility(View.GONE);
@@ -51,6 +64,33 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         rowBody2.setOnClickListener(this);
         rowBody3.setOnClickListener(this);
 
+        //editTextDate.setKeyListener(null);
+
+        myCalendar = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                myCalendar.set(Calendar.YEAR, i);
+                myCalendar.set(Calendar.MONTH, i1);
+                myCalendar.set(Calendar.DAY_OF_MONTH, i2);
+                updateLabel();
+            }
+        };
+
+        editTextDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(QuestionsActivity.this, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+    }
+
+    // https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
+    private void updateLabel() {
+        String myFormat = "dd/MM/yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ENGLISH);
+
+        editTextDate.setText(sdf.format(myCalendar.getTime()));
     }
 
     @Override

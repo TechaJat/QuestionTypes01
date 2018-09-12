@@ -290,13 +290,13 @@
                 android:text="Text Input" />
 
             <EditText
-                android:id="@+id/editText_input1"
+                android:id="@+id/editText_input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/border_textbox_background"
                 android:ems="10"
-                android:hint="enter some text ..."
+                android:hint="example@email.com ..."
                 android:inputType="text"
                 android:padding="16dp"
                 android:textSize="24sp" />
@@ -310,18 +310,50 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
-                    android:text="Some Text:"
+                    android:text="Integer:"
+                    android:inputType="number"
+                    android:layout_weight="1"
                     android:textSize="24sp" />
 
                 <EditText
-                    android:id="@+id/editText_input2"
+                    android:id="@+id/editText_tb_integer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
                     android:layout_weight="1"
+                    android:layout_gravity="end"
                     android:background="@drawable/border_textbox_background"
                     android:ems="10"
                     android:inputType="text"
+                    android:padding="16dp"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:text="Date of birth:"
+                    android:layout_weight="0.5"
+                    android:textSize="24sp" />
+
+                <EditText
+                    android:id="@+id/editText_tb_datepicker"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="end"
+                    android:background="@drawable/border_textbox_background"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:inputType="date"
                     android:padding="16dp"
                     android:textSize="24sp" />
 
