@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +19,11 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class QuestionsActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private CheckBox ch103;
+    private CheckBox ch104;
+    private CheckBox ch105;
+    private CheckBox ch106;
 
     private LinearLayout rowBody;
     private TextView rowLabel;
@@ -39,11 +45,15 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     Calendar myCalendar;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
+
+        ch103 = findViewById(R.id.checkBox_q2_field_103);
+        ch104 = findViewById(R.id.checkBox_q2_field_104);
+        ch105 = findViewById(R.id.checkBox_q2_field_105);
+        ch106 = findViewById(R.id.checkBox_q2_field_106);
 
         rowBody = findViewById(R.id.linearLayout_rbGrid_rowBody);
         rowOptions = findViewById(R.id.radioGroup_rowLabel_options);
@@ -64,6 +74,11 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         rowOptions.setVisibility(View.GONE);
         rowOptions2.setVisibility(View.GONE);
         rowOptions3.setVisibility(View.GONE);
+
+        ch103.setOnClickListener(this);
+        ch104.setOnClickListener(this);
+        ch105.setOnClickListener(this);
+        ch106.setOnClickListener(this);
 
         rowBody.setOnClickListener(this);
         rowBody2.setOnClickListener(this);
@@ -131,7 +146,20 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         Log.v("Questions Activity", "a message");
-        if (view.getId() == rowBody.getId()) {
+        if (view.getId() == ch103.getId() ||
+                view.getId() == ch104.getId() ||
+                view.getId() == ch105.getId() ||
+                view.getId() == ch106.getId()) {
+
+            Boolean bl1 = ch106.isChecked();
+            Boolean bl2 = ch103.isChecked() || ch104.isChecked() || ch105.isChecked();
+
+            ch103.setEnabled(!bl1);
+            ch104.setEnabled(!bl1);
+            ch105.setEnabled(!bl1);
+            ch106.setEnabled(!bl2);
+
+        } else if (view.getId() == rowBody.getId()) {
             if (rowOptions.isShown()) {
                 rowOptions.setVisibility(View.GONE);
                 expandIcon.setBackgroundResource(R.drawable.ic_expand_more_black_24dp);
